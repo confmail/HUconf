@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "absolute-cipher-332005",
+  "private_key_id": "c9a3851ad488a0dfb31292efda19530d423af9e5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/KsFAU67m65E2\nlNOhnvh1s0FxazryxI8R82Pf3KafI9kEumidmKCtegIJUu/9CR8gzhNRUenrFYUw\nCk+7hihuOcr4CQ2c9V8/3hBBoI3LPDqLqpAKYeW6w2dywTgyERNGyb+Q7YpSddFJ\ndfhYh5dK1hRMjN/2HjN2ENUWfhigVlZRWUJcSir734viSgpMSdoI51gGEVkpQIGO\nSNkVejdmVj5gtNsARFpS8ibIYrfXJvclQZwhFw15lrl+W/VkLNo7tfXJUM9xhSnC\nfvvv6AYSW9AfJoeL07G/rlkYrV+ObFmHlAX9O6WSxUyiEEqSKcebkzd0SpHgp5zT\nblNrwsTPAgMBAAECggEADIZ6nwJcpVit7QuXSjGmSd/y28GQ3TMvxJdT5ekJKcgp\ngfvMuvazIGqsE3xRqRyd44JdFajuUK7aSSmDy9+gaohy2gmN0Mjq8r5UBljEsZpC\no8ALLAL6EGCZOJWcXvtrbenuGUrXE0wQ6GVIXlST/x1DuzhHvFKCQKwdqhmc93RT\nufUXRLKAPlVQ8h6GkP5DW1iWdhqUTF8+FNLv9v98WLRSk6YDH5XqFpFoSDfWF17E\nyEY5rluwUQR+lQAhv/Mnxizy8VdtcO6DT0IUKCW/dEmrQgTnWi+JppUYQRBcLene\n11ZY3pWXEQPQCH8eTQDZpVMMGtu8sYWy0eXJ+qO2YQKBgQDfLCMsvZbrnMPvCX89\nqQ2zaer7tor+FMXp3oqKIAVtuYvqmVbJBzvYMj6ntnwUwhG/RfTZeGcHFLj6FZhs\nePlpxCGpqPWdiJkLIviyZXcm7twS2+hn23Yc0KE24Je2Dnskg2LU2Jf14Q796EcF\n78EbF9/0iY45S/G87Rw14o8zZwKBgQDbSWkLYNST3DZ72iKisfiF6f0WZaQFh+1F\nSlT50/vNXCWV9OFsI6hsZeNg7O4/7NlaRPK9YLTfmaO0HKYJ7WmWyCPKf9ehflP1\nvSGv1Pgb8m0L253oaurEYfNUK2iyEYbNr5U4ANdWHJ1THnja++L4sik4T3/rhiPo\nv0tThj0qWQKBgQCk6wr7TwcuCeTIyi3bNQhI4yag6F6CMHuovamHNO6ODSWWMcZu\nPAg/VbHzYekDtf5DaMDtzAnms6uWM0s2LZeyTxvJMnB+/6iJEEjUHCMXBEBhN1zh\nEs6PsKTR1tqF0OGzM9xfCcgSDUR04adKfcgn61a2cMhHExYK1PWZ5FiKVQKBgQCj\nyIfJtM/xg/e5t6pI5C5gLu0WLmI8s1J3f1ZKppcawilcgGNh9pwUImGbAjvMySVq\nM7ct1S4jF8jafM9S+Nz1fpSk6alveEBTeajQgHuzu/TQd37QmhKxDQvGIQn4ffi2\nZd9IzfAH5CVpcIgJ3zqeT8tTwKUlj7IAY+hqAQhsOQKBgG05AZdG2xKmtoQFz1zh\nPIcromi/3w7BrNeNTHvD2q1q2iPWnhsdSBC9GRIX5Min7FRnhVKJksWBQhWQo++V\nI3zRXauoZPtIknDfH5dQKrR1J8o5W5wPKyPFON7d4m4Soo04qbTjmyynQJBGQgzr\nQxo4JR7CAfabYog9GVMMaJAy\n-----END PRIVATE KEY-----\n",
+  "client_email": "trader@absolute-cipher-332005.iam.gserviceaccount.com",
+  "client_id": "105699052145803852009",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/trader%40absolute-cipher-332005.iam.gserviceaccount.com"
+}
