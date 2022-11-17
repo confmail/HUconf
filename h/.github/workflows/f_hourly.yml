@@ -1,0 +1,40 @@
+name: FR_H
+
+on:
+#  schedule:
+#    - cron: '35 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        tag: ['1', '2', '3', '4', '5', '6', '7']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache requirements
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip3 install packaging
+      - name: create-json
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "config.json"
+          json: ${{ secrets.CONFIG }}
+      - name: Test python
+        run: |
+          BASE_URL=${{ secrets.BASE_URL_F }}
+          python3 v_f/f.py "$BASE_URL"
