@@ -189,9 +189,9 @@ def register(key):
                 logging.warning('Уже зареген')
                 driver.close()
             else:
+                logging.warning(f'Нет дат-{key}слотH3conf: {start_time_dict[key]}')
                 sleep(3)
                 telegram.send_doc(f'⭕В для:{name}-{key}слотH3conf нет дат {start_time_dict[key]}', driver.page_source)
-                logging.warning(f'Нет дат-{key}слотH3conf: {start_time_dict[key]}')
                 if f.is_element_displayed('//button[text()="Хорошо"]'):
                     for i in range(20):
                         try:
