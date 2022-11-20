@@ -39,8 +39,7 @@ def register(key):
     try:
         logging.warning(sys.argv[1])
         logging.warning(user)
-        start_time_dict = {'1': '59/56.0', '2': '59/57.0', '3': '59/58.0', '4': '59/59.0',
-                           '5': '59/56.5', '6': '59/57.5', '7': '59/58.5', '8':'59/59.5'}
+        start_time_dict = {'1': '59/58.0', '2': '59/59.9'}
 
         time= datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{start_time_dict[key]}', '%m/%d/%Y/%H/%M/%S.%f')
         options = webdriver.ChromeOptions()
