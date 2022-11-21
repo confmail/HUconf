@@ -1,0 +1,38 @@
+name: Hungary 132
+
+on:
+  schedule:
+    - cron: '30 22 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ['59/56.0', '59/56.5', '59/56.4', '59/57.5']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache requirements
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: create-json
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "config.json"
+          json: ${{ secrets.CONFIG }}
+      - name: Test python
+        run: |
+          BASE_URL=${{ secrets.BASE_URL }}
+          python3 v_h/h.py ${{ matrix.tag }} "132" "1" "$BASE_URL"
