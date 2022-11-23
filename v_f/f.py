@@ -72,6 +72,7 @@ if __name__ == "__main__":
                 else:
                     sleep(random.randint(100, 120))
                 logging.warning('Ф нет дат')
+                telegram.send_doc(f'Ф({i}): Нет дат!', driver.page_source, debug=False)
             else:
                 telegram.send_doc(f'Ф({i}): Ошибка 502', driver.page_source, debug=False)
                 sleep(random.randint(10, 20))
