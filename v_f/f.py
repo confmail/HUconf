@@ -63,11 +63,13 @@ if __name__ == "__main__":
                                 f.click_on('//section/div')
                         else:
                             telegram.send_doc('🟢 🇫🇷 Ф появился слот', driver.page_source, debug=False)
+                            logging.warning('Появился Слот')
                             sleep(random.randint(100, 120))
                             driver.quit()
                             break
                 elif not f.is_element_displayed('На сегодня нет свободных мест.'):
                     telegram.send_doc(f'Ф({i}): Есть даты!', driver.page_source, debug=False)
+                    logging.warning('Появился Слот')
                     sleep(random.randint(100, 120))
                 else:
                     sleep(random.randint(100, 120))
