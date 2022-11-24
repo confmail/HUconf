@@ -52,7 +52,7 @@ if __name__ == "__main__":
                         break
                 f.click_on('Назначить встречу')
                 if f.is_element_displayed('//section/div'):
-                    telegram.send_doc('🇫🇷 Ф появилась дата', driver.page_source)
+                    telegram.send_doc('🇫🇷 Ф-hour появилась дата', driver.page_source)
                     f.click_on('//section/div')
                     while True:
                         if f.is_element_displayed(
@@ -62,26 +62,26 @@ if __name__ == "__main__":
                             if f.is_element_displayed('//section/div'):
                                 f.click_on('//section/div')
                         else:
-                            telegram.send_doc('🟢 🇫🇷 Ф появился слот', driver.page_source, debug=False)
+                            telegram.send_doc('🟢 🇫🇷 Ф-hour появился слот', driver.page_source, debug=False)
                             logging.warning('Появился Слот')
                             sleep(random.randint(100, 120))
                             driver.quit()
                             break
                 elif not f.is_element_displayed('На сегодня нет свободных мест.'):
-                    telegram.send_doc(f'Ф({i}): Есть даты!', driver.page_source, debug=False)
+                    telegram.send_doc(f'Ф-hour({i}): Есть даты!', driver.page_source, debug=False)
                     logging.warning('Появился Слот')
                     sleep(random.randint(100, 120))
                 else:
                     sleep(random.randint(100, 120))
-                logging.warning('Ф нет дат')
-                telegram.send_doc(f'Ф({i}): Нет дат!', driver.page_source, debug=False)
+                logging.warning('Ф-hour нет дат')
+                telegram.send_doc(f'Ф-hour({i}): Нет дат!', driver.page_source, debug=False)
             else:
-                telegram.send_doc(f'Ф({i}): Ошибка 502', driver.page_source, debug=False)
+                telegram.send_doc(f'Ф-hour({i}): Ошибка 502', driver.page_source, debug=False)
                 sleep(random.randint(10, 20))
         except Exception as e:
             try:
-                telegram.send_doc(f'Ф({i}): Неизвестная ошибка', driver.page_source, debug=False)
+                telegram.send_doc(f'Ф-hour({i}): Неизвестная ошибка', driver.page_source, debug=False)
                 sleep(random.randint(100, 120))
             except Exception as e:
-                telegram.send_message(f'Ф({i}): Неизвестная ошибка\n{str(e)}', debug=False)
+                telegram.send_message(f'Ф-hour({i}): Неизвестная ошибка\n{str(e)}', debug=False)
                 sleep(random.randint(100, 120))
