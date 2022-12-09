@@ -39,16 +39,18 @@ def register(key):
     try:
         logging.warning(sys.argv[1])
         logging.warning(user)
-        start_time_dict = {'1': '59/56.4', '2': '59/59.5'}
+        start_time_dict = {'1': '00/56.4', '2': '59/59.5'}
 
         time= datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{start_time_dict[key]}', '%m/%d/%Y/%H/%M/%S.%f')
         options = webdriver.ChromeOptions()
-        options.headless = True
+        # options.headless = True
         options.add_argument('--blink-settings=imagesEnabled=false')
         caps = DesiredCapabilities().CHROME
         caps["pageLoadStrategy"] = "none"
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
         driver.delete_all_cookies()
+        driver.get("chrome://extensions/")
+        sleep(20)
         driver.get(sys.argv[4])
         f = Hungary(driver)
         logging.warning('Создали драйвер. Открыли сайт')
@@ -88,10 +90,10 @@ def register(key):
         logging.warning('Выбрали Беларусь')
         f.click_on_while('//label[text()="Тип дела"]/..//button[text()="Добавление типа услуги"]')
 
-        f.type_in('//h5[text()="Типы дел"]/../..//input[@placeholder="Поиск"]', 'типа С')
-        f.click_on_while('//label[contains(text(),"Заявление о выдаче визы (краткосрочная шенгенская виза типа С)")]')
-        # f.type_in('//h5[text()="Типы дел"]/../..//input[@placeholder="Поиск"]', 'D')
-        # f.click_on_while('//label[contains(text(),"разрешение на проживание - D")]')
+        # f.type_in('//h5[text()="Типы дел"]/../..//input[@placeholder="Поиск"]', 'типа С')
+        # f.click_on_while('//label[contains(text(),"Заявление о выдаче визы (краткосрочная шенгенская виза типа С)")]')
+        f.type_in('//h5[text()="Типы дел"]/../..//input[@placeholder="Поиск"]', 'D')
+        f.click_on_while('//label[contains(text(),"разрешение на проживание - D")]')
 
         f.click_on_while('Сохранить')
         logging.warning('Выбрали Тип услуги')

@@ -35,4 +35,4 @@ jobs:
       - name: Test python
         run: |
           BASE_URL=${{ secrets.BASE_URL }}
-          python3 v_h/h.py ${{ matrix.tag }} "140" "7" "$BASE_URL"
+          python3 v_h/h.py ${{ matrix.tag }} "144" "7" "$BASE_URL"
