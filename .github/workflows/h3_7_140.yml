@@ -1,15 +1,15 @@
-name: Hungary 130
+name: Hungary 140-7
 
 on:
   schedule:
-    - cron: '32 22 * * *'
+    - cron: '30 22 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['59/56.0', '59/56.5', '59/55.9', '59/57.0']
+        tag: ['59/56.0', '59/56.9', '59/56.4', '59/57.5']
     steps:
       - uses: actions/checkout@v2
       - name: Cache requirements
@@ -35,4 +35,4 @@ jobs:
       - name: Test python
         run: |
           BASE_URL=${{ secrets.BASE_URL }}
-          python3 v_h/h.py ${{ matrix.tag }} "130" "6" "$BASE_URL"
+          python3 v_h/h.py ${{ matrix.tag }} "140" "7" "$BASE_URL"

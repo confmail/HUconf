@@ -1,4 +1,4 @@
-name: Hungary 134H
+name: Hungary 140H
 
 on:
   schedule:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['1', '2']
+        tag: ['1', '7']
     steps:
       - uses: actions/checkout@v2
       - name: Cache requirements
