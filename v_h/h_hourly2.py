@@ -49,8 +49,7 @@ def register(key):
         caps["pageLoadStrategy"] = "none"
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
         driver.delete_all_cookies()
-        driver.get("chrome://extensions/")
-        sleep(20)
+        sleep(5)
         driver.get(sys.argv[4])
         f = Hungary(driver)
         logging.warning('Создали драйвер. Открыли сайт')
