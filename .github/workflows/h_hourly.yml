@@ -36,3 +36,16 @@ jobs:
         run: |
           BASE_URL=${{ secrets.BASE_URL }}
           python3 v_h/h_hourly2.py ${{ matrix.tag }} "140" "140" "$BASE_URL"
+      - name: Public IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+      - name: send custom message
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            IP for ${{ matrix.tag }}
+            IP6: ${{ steps.ip.outputs.ipv6 }}
+            IP4: ${{ steps.ip.outputs.ipv4 }}
