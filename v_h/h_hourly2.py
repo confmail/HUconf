@@ -39,7 +39,7 @@ def register(key):
     try:
         logging.warning(sys.argv[1])
         logging.warning(user)
-        start_time_dict = {'1': '00/56.4', '7': '00/59.5'}
+        start_time_dict = {'1': '59/56.4', '7': '59/59.5'}
 
         time= datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{start_time_dict[key]}', '%m/%d/%Y/%H/%M/%S.%f')
         options = webdriver.ChromeOptions()
@@ -64,6 +64,7 @@ def register(key):
                 break
         else:
             driver.get("https://2ip.ru/")
+            sleep(5)
             telegram.send_doc(caption=f'{name}-{key}слотH3confHourly Не прогрузился язык или дата', html=driver.page_source)
             raise RuntimeError(f'Не прогрузился язык или дата {name}-{key}')
         f.click_on_while('//button[@id="langSelector"]')
