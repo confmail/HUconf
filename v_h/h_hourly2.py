@@ -52,14 +52,14 @@ def register(key):
         driver.delete_all_cookies()
         sleep(5)
         driver.get(sys.argv[4])
-        sleep(15)
+        sleep(20)
         f = Hungary(driver)
         logging.warning('Создали драйвер. Открыли сайт')
-        for i in range(3):
+        for i in range(5):
             if not f.is_element_displayed('//button[@id="langSelector"]') or not f.is_element_displayed(
                     '//input[@id="birthDate"]'):
                 driver.refresh()
-                sleep(3)
+                sleep(10)
             else:
                 break
         else:

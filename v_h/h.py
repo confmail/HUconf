@@ -16,6 +16,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
+
+
+
 class Hungary(BasePage):
     pass
 
@@ -39,19 +42,23 @@ def register(dt):
 
         time= datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{dt}', '%m/%d/%Y/%H/%M/%S.%f')
         options = webdriver.ChromeOptions()
-        options.headless = True
+        # options.headless = True
         options.add_argument('--blink-settings=imagesEnabled=false')
+        options.add_extension(r'vpn\2_0_0.crx')
         caps = DesiredCapabilities().CHROME
         caps["pageLoadStrategy"] = "none"
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
+        driver.implicitly_wait(20)
         driver.delete_all_cookies()
+        driver.switch_to.window(driver.window_handles[1])
         driver.get(sys.argv[4])
+        sleep(20)
         f = Hungary(driver)
         logging.warning('Создали драйвер. Открыли сайт')
-        for i in range(3):
+        for i in range(5):
             if not f.is_element_displayed('//button[@id="langSelector"]') or not f.is_element_displayed('//input[@id="birthDate"]'):
                 driver.refresh()
-                sleep(3)
+                sleep(10)
             else:
                 break
         else:
