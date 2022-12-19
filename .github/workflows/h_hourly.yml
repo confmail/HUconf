@@ -1,8 +1,8 @@
 name: Hungary 140H
 
-on:
-  schedule:
-    - cron: '35 * * * *'
+#on:
+#  schedule:
+#    - cron: '35 * * * *'
 
 jobs:
   build:
