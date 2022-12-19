@@ -49,8 +49,8 @@ def register(key):
         caps["pageLoadStrategy"] = "none"
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
         driver.implicitly_wait(20)
-        driver.delete_all_cookies()
         sleep(5)
+        driver.delete_all_cookies()
         driver.get(sys.argv[4])
         sleep(20)
         f = Hungary(driver)
@@ -59,10 +59,11 @@ def register(key):
             if not f.is_element_displayed('//button[@id="langSelector"]') or not f.is_element_displayed(
                     '//input[@id="birthDate"]'):
                 driver.refresh()
-                sleep(10)
+                sleep(30)
             else:
                 break
         else:
+            driver.get("https://2ip.ru/")
             telegram.send_doc(caption=f'{name}-{key}слотH3confHourly Не прогрузился язык или дата', html=driver.page_source)
             raise RuntimeError(f'Не прогрузился язык или дата {name}-{key}')
         f.click_on_while('//button[@id="langSelector"]')
