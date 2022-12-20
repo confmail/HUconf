@@ -37,9 +37,6 @@ def register(dt):
         logging.warning(sys.argv[1])
         logging.warning(user)
 
-        start_time_dict = {'1': '59/56.5', '2': '59/57.5', '3': '59/58.5', '4': '59/57.0',
-                           '5': '59/59.0', '6': '59/57.5', '7': '59/58.5', '8': '59/55.5'}
-
         time= datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{dt}', '%m/%d/%Y/%H/%M/%S.%f')
         options = webdriver.ChromeOptions()
         options.headless = True
@@ -49,9 +46,20 @@ def register(dt):
         caps["pageLoadStrategy"] = "none"
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
         driver.implicitly_wait(20)
-        sleep(5)
-        driver.delete_all_cookies()
         # driver.switch_to.window(driver.window_handles[1])
+        sleep(5)
+        # проверка айпи
+        logging.warning('проверка айпи')
+        driver.get("https://2ip.ru/")
+        ip_text = driver.find_element(By.ID, "d_clip_button").text
+        city_text = driver.find_element(By.XPATH, '//div[contains(@class, value-country)]/a[@title="Посмотреть точное место на карте"]').get_attribute("text")
+        logging.warning(ip_text)
+        logging.warning(city_text)
+        sleep(5)
+        telegram.send_doc(caption=f'{name}{index}слот{t}H3conf{user}Проверка айпи{ip_text}-{city_text}',
+                          html=driver.page_source)
+
+        driver.delete_all_cookies()
         driver.get(sys.argv[4])
         sleep(20)
         f = Hungary(driver)
