@@ -41,7 +41,8 @@ def register(key):
         logging.warning(user)
         start_time_dict = {'1': '59/56.1', '7': '59/58.5'}
 
-        time= datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{start_time_dict[key]}', '%m/%d/%Y/%H/%M/%S.%f')
+        time = datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{start_time_dict[key]}',
+                                 '%m/%d/%Y/%H/%M/%S.%f')
         options = webdriver.ChromeOptions()
         options.headless = True
         options.add_argument('--blink-settings=imagesEnabled=false')
@@ -50,6 +51,19 @@ def register(key):
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
         driver.implicitly_wait(20)
         sleep(5)
+        # проверка айпи
+        logging.warning('проверка айпи')
+        driver.get("https://2ip.ru/")
+        ip_text = driver.find_element(By.ID, "d_clip_button").text
+        city_text = driver.find_element(By.XPATH,
+                                        '//div[contains(@class, value-country)]/a[@title="Посмотреть точное место на карте"]').get_attribute(
+            "text")
+        logging.warning(ip_text)
+        logging.warning(city_text)
+        sleep(5)
+        telegram.send_doc(caption=f'{name}{key}слот{start_time_dict[key]}H_hourly_conf{user}Проверка айпи{ip_text}-{city_text}',
+                          html=driver.page_source)
+
         driver.delete_all_cookies()
         driver.get(sys.argv[4])
         sleep(20)
@@ -65,7 +79,15 @@ def register(key):
         else:
             driver.get("https://2ip.ru/")
             sleep(5)
-            telegram.send_doc(caption=f'{name}-{key}слотH3confHourly Не прогрузился язык или дата', html=driver.page_source)
+            ip_text = driver.find_element(By.ID, "d_clip_button").text
+            city_text = driver.find_element(By.XPATH,
+                                            '//div[contains(@class, value-country)]/a[@title="Посмотреть точное место на карте"]').get_attribute(
+                "text")
+            logging.warning(ip_text)
+            logging.warning(city_text)
+            telegram.send_doc(
+                caption=f'{name}{key}слот{start_time_dict[key]}H_hourly_conf{user} Не прогрузился язык или дата{ip_text}-{city_text}',
+                html=driver.page_source)
             raise RuntimeError(f'Не прогрузился язык или дата {name}-{key}')
         f.click_on_while('//button[@id="langSelector"]')
         while True:
@@ -183,8 +205,9 @@ def register(key):
                                    '%m/%d/%Y/%H/%M/%S.%f')
             logging.warning(f'ЗАПИСАН:({name}): {dt}')
             sleep(10)
-            telegram.send_doc(f'🟩В: в {dt} успешно зарегистрирован({name}-{key}слотH3confHourly {start_time_dict[key]})',
-                              driver.page_source)
+            telegram.send_doc(
+                f'🟩В: в {dt} успешно зарегистрирован({name}-{key}слотH3confHourly {start_time_dict[key]})',
+                driver.page_source)
         else:
             if f.is_element_displayed(
                     '//div[text()="Обращаем Ваше внимание, что у Вас уже есть действующая запись для решения данного вопроса."]'):
@@ -193,7 +216,8 @@ def register(key):
                 logging.warning('Уже зареген')
                 driver.close()
             else:
-                telegram.send_doc(f'⭕В для:{name}-{key}слотH3confHourly нет дат {start_time_dict[key]}', driver.page_source)
+                telegram.send_doc(f'⭕В для:{name}-{key}слотH3confHourly нет дат {start_time_dict[key]}',
+                                  driver.page_source)
                 logging.warning(f'Нет дат-{key}слотH3confHourly: {start_time_dict[key]}')
                 if f.is_element_displayed('//button[text()="Хорошо"]'):
                     for i in range(20):
