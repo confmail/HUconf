@@ -39,7 +39,7 @@ def register(dt):
 
         time= datetime.strptime(f'{datetime.now(tz=timezone.utc).strftime("%m/%d/%Y/%H")}/{dt}', '%m/%d/%Y/%H/%M/%S.%f')
         options = webdriver.ChromeOptions()
-        # options.headless = True
+        options.headless = True
         options.add_argument('--blink-settings=imagesEnabled=false')
         # options.add_extension(r'vpn\2_0_0.crx')
         caps = DesiredCapabilities().CHROME
