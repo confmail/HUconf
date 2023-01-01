@@ -1,8 +1,8 @@
 name: Hungary 140H
 
 on:
-#  schedule:
-#    - cron: '35 * * * *'
+  schedule:
+    - cron: '35 * * * *'
 
 jobs:
   build:
@@ -35,4 +35,4 @@ jobs:
       - name: Test python
         run: |
           BASE_URL=${{ secrets.BASE_URL }}
-          python3 v_h/h_hourly2.py ${{ matrix.tag }} "140" "140" "$BASE_URL"
+          python3 v_h/h_hourly2.py ${{ matrix.tag }} "146" "146" "$BASE_URL"
