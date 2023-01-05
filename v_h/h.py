@@ -56,8 +56,8 @@ def register(dt):
         logging.warning(ip_text)
         logging.warning(city_text)
         sleep(5)
-        telegram.send_doc(caption=f'{name}{index}слот{t}H3conf{user}Проверка айпи{ip_text}-{city_text}',
-                          html=driver.page_source)
+        # telegram.send_doc(caption=f'{name}{index}слот{t}H3conf{user}Проверка айпи{ip_text}-{city_text}',
+        #                   html=driver.page_source)
 
         driver.delete_all_cookies()
         driver.get(sys.argv[4])
